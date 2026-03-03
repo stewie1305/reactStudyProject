@@ -10,7 +10,7 @@ import RegisterPage from "@/features/auth/pages/RegisterPage";
 import { ProtectedRoute } from "@/shared/components/common/ProtectedRoute";
 import AdminLayout from "@/shared/layouts/AdminLayout";
 import UnauthorizedPage from "@/features/auth/pages/UnauthorizedPage";
-import ProfilePage from "@/features/auth/pages/ProfilePage";
+import ProfilePage from "@/features/users/pages/ProfilePage";
 import NotFoundPage from "@/features/auth/pages/NotFoundPage";
 import ManageRitualList from "@/features/ritual/pages/ManageRitualList";
 import ManageRitualCreate from "@/features/ritual/pages/ManageRitualCreate";

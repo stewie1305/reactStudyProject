@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import {
   Card,
   CardContent,
@@ -20,15 +18,6 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <LoginForm />
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="font-medium hover:underline focus-visible:underline"
-            >
-              Sign up
-            </Link>
-          </p>
         </CardContent>
       </Card>
     </div>

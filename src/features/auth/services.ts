@@ -1,6 +1,5 @@
 import apiClient from "@/lib/axios";
 import type {
-  User,
   RegisterDto,
   LoginRequest,
   AuthResponse,
@@ -15,11 +14,6 @@ export const authService = {
       API_ENDPOINTS.AUTH.LOGIN,
       credentials,
     ) as unknown as Promise<AuthResponse>;
-  },
-  async getMe(): Promise<User> {
-    const responseBody = await apiClient.get("user/me");
-    console.log("response", responseBody.data);
-    return responseBody.data;
   },
   async register(data: RegisterDto): Promise<AuthResponse> {
     return apiClient.post<AuthResponse>(

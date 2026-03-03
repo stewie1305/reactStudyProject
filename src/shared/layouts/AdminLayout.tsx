@@ -1,11 +1,15 @@
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import { Footer } from "./Footer";
+
 export default function AdminLayout() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
-      <p>
-        Welcome to the admin dashboard. Here you can manage users, content, and
-        settings.
-      </p>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -5,7 +5,8 @@ import { useLoginMutation } from "../hooks/useAuthMutation";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
-import { Link, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 
 export function LoginForm() {
   const loginMutation = useLoginMutation();
