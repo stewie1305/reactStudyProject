@@ -48,7 +48,7 @@ export const useLoginMutation = () => {
       toast.success("Đăng nhập thành công");
       // Redirect dựa trên role, Admin thì vào trang admin, user thì vào trang profile
       if (decoded.role === "admin") {
-        navigate("/admin/rituals", { replace: true });
+        navigate("/admin/ritual", { replace: true });
       } else {
         navigate(from, { replace: true });
       }

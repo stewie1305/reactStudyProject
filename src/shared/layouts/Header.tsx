@@ -84,7 +84,7 @@ const Header = () => {
                       to="/ritual"
                       className={cn(
                         navigationMenuTriggerStyle(),
-                        location.pathname === "/ritual" &&
+                        location.pathname.startsWith("/ritual") &&
                           "bg-primary/10 text-primary font-bold underline",
                       )}
                     >

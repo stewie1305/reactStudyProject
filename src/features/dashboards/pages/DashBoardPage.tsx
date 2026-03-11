@@ -103,7 +103,7 @@ export default function DashboardPage() {
                   <p className="text-muted-foreground mb-4">
                     Create, edit, and organize your rituals
                   </p>
-                  <Link to="/ritual">
+                  <Link to="/admin/ritual">
                     <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
                       View Rituals
                       <ArrowRight className="w-4 h-4 ml-2" />
