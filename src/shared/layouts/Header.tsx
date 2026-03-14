@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
 } from "@radix-ui/react-navigation-menu";
 import { Link, useLocation } from "react-router-dom";
-import { navigationMenuTriggerStyle } from "@/shared/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/shared/components/ui/navigation-menu-trigger-style";
 import { cn } from "@/lib/utils";
 import { useLogoutMutation } from "@/features/auth/hooks/useAuthMutation";
 import { ThemeToggle } from "@/shared/components/common/ThemeToggle";
