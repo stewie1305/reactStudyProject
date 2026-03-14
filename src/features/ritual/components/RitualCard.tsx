@@ -9,7 +9,7 @@ import {
 } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import type { Ritual } from "../types";
-
+import { lazy } from "react";
 interface RitualCardProps {
   ritual: Ritual;
 }
