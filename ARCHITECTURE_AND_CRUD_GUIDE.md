@@ -1,6 +1,7 @@
 # Flow Code Architecture & CRUD Implementation Guide
 
 ## 📋 Mục Lục
+
 1. [Tổng Quan Kiến Trúc Dự Án](#-tổng-quan-kiến-trúc-dự-án)
 2. [Flow Dữ Liệu](#-flow-dữ-liệu)
 3. [Hướng Dẫn Tạo CRUD Feature Mới](#-hướng-dẫn-tạo-crud-feature-mới)
@@ -11,6 +12,7 @@
 ## 🏗 Tổng Quan Kiến Trúc Dự Án
 
 ### Stack Công Nghệ
+
 - **Frontend Framework**: React 19 + TypeScript
 - **Routing**: React Router v7
 - **State Management**: Zustand (Auth), React Query (Server State)
@@ -121,7 +123,12 @@ Sử dụng `createBaseService()` - một factory function generic:
 
 ```typescript
 // Ví dụ: Ritual Service
-export const ritualService = createBaseService<Ritual, CreateRitualDto, UpdateRitualDto, RitualFilterParams>({
+export const ritualService = createBaseService<
+  Ritual,
+  CreateRitualDto,
+  UpdateRitualDto,
+  RitualFilterParams
+>({
   endpoint: API_ENDPOINTS.RITUAL.BASE,
   remove: async (id) => {
     await apiClient.patch(`${API_ENDPOINTS.RITUAL.BASE}/${id}/soft-remove`);
@@ -170,7 +177,7 @@ export function useRituals() {
 export function useCreateRitual() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (data: CreateRitualDto) => ritualService.create(data),
     onSuccess: () => {
@@ -318,10 +325,7 @@ export const categorySchema = z.object({
     .string()
     .min(1, "Tên danh mục không được để trống")
     .max(100, "Tên tối đa 100 ký tự"),
-  description: z
-    .string()
-    .max(500, "Mô tả tối đa 500 ký tự")
-    .optional(),
+  description: z.string().max(500, "Mô tả tối đa 500 ký tự").optional(),
 });
 
 export type CategoryFormData = z.infer<typeof categorySchema>;
@@ -380,7 +384,7 @@ import { useMemo } from "react";
 // 🔍 Get all categories with filtering
 export function useCategories() {
   const [searchParams] = useSearchParams();
-  
+
   const filter = useMemo<CategoryFilterParams>(() => {
     return {
       page: Number(searchParams.get("page")) || 1,
@@ -413,8 +417,8 @@ export function useCreateCategory() {
     onSuccess: () => {
       toast.success("Tạo danh mục thành công");
       // Invalidate cache để refetch data
-      queryClient.invalidateQueries({ 
-        queryKey: [QUERY_KEYS.CATEGORIES] 
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.CATEGORIES],
       });
       navigate("/admin/categories");
     },
@@ -434,8 +438,8 @@ export function useUpdateCategory() {
       categoryService.update(id, data),
     onSuccess: () => {
       toast.success("Cập nhật danh mục thành công");
-      queryClient.invalidateQueries({ 
-        queryKey: [QUERY_KEYS.CATEGORIES] 
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.CATEGORIES],
       });
       navigate("/admin/categories");
     },
@@ -453,8 +457,8 @@ export function useDeleteCategory() {
     mutationFn: (id: string) => categoryService.remove(id),
     onSuccess: () => {
       toast.success("Xóa danh mục thành công");
-      queryClient.invalidateQueries({ 
-        queryKey: [QUERY_KEYS.CATEGORIES] 
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.CATEGORIES],
       });
     },
     onError: (error) => {
@@ -586,7 +590,7 @@ export function CategoryTable({ categories }: CategoryTableProps) {
               >
                 Sửa
               </Button>
-              
+
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="destructive" size="sm">
@@ -830,6 +834,7 @@ src/features/offerings/
 ```
 
 **Key Points:**
+
 - ✅ Tất cả business logic ở service layer
 - ✅ Tất cả form validation ở schema.ts
 - ✅ React Query handle caching + invalidation
@@ -842,12 +847,14 @@ src/features/offerings/
 ## 🎯 Best Practices
 
 ### 1. **Separation of Concerns**
+
 - Service Layer: API calls only
 - Custom Hooks: Data fetching + side effects
 - Components: UI only
 - Pages: Compose everything
 
 ### 2. **Error Handling**
+
 ```typescript
 // Tất cả mutations nên có error handler
 const { mutate, isPending, error } = useMutation({
@@ -859,6 +866,7 @@ const { mutate, isPending, error } = useMutation({
 ```
 
 ### 3. **Loading States**
+
 ```typescript
 // Luôn show loading state
 <Button disabled={isPending}>
@@ -867,14 +875,16 @@ const { mutate, isPending, error } = useMutation({
 ```
 
 ### 4. **Query Key Management**
+
 ```typescript
 // Use consistent query keys
-queryKey: [QUERY_KEYS.CATEGORIES, filter]
+queryKey: [QUERY_KEYS.CATEGORIES, filter];
 // Invalidate exactly
-queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CATEGORIES] })
+queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CATEGORIES] });
 ```
 
 ### 5. **Type Safety**
+
 ```typescript
 // Luôn define proper types
 interface CategoryFilterParams extends BaseFilterParams {
