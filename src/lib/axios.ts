@@ -71,7 +71,7 @@ apiClient.interceptors.response.use(
                 //khi refresh xong,retry request nay vs token moi
                 originalRequest.headers.Authorization = `Bearer ${token}`;
                 return apiClient(originalRequest);
-            });
+            })  ;
     
         }
         originalRequest._retry = true;

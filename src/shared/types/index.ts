@@ -39,13 +39,6 @@ export interface ApiError {
   timestamp?: string;
   path?: string;
 }
-
-// ─── Select Option ───────────────────────────────────────
-export interface SelectOption {
-  id: string;
-  name: string;
-}
-
 export interface BaseServiceConfig<
   TEntity, //type cua entity chinh ( VD: Ritual)
   TCreateDto, // Type cua data khi create

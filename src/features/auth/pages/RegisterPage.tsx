@@ -17,7 +17,6 @@ export default function RegisterPage() {
             Học Axios Interceptor & Service Layer
           </CardDescription>
         </CardHeader>
-
         <CardContent>
           <RegisterForm />
         </CardContent>

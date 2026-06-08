@@ -7,14 +7,17 @@ import RitualsCatalog from "@/features/ritual/pages/RitualsCatalog";
 import { GuestRoute } from "@/shared/components/common/GuestRoute";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import { ProtectedRoute } from "@/shared/components/common/ProtectedRoute";
-// import AdminLayout from "@/shared/layouts/AdminLayout";
-const AdminLayout = lazy(() => import("@/shared/layouts/AdminLayout"));
+import { lazy, Suspense, type ReactNode } from "react";
 import UnauthorizedPage from "@/features/auth/pages/UnauthorizedPage";
 import ProfilePage from "@/features/users/pages/ProfilePage";
 import NotFoundPage from "@/features/auth/pages/NotFoundPage";
 import ManageRitualList from "@/features/ritual/pages/ManageRitualList";
+// import AdminLayout from "@/shared/layouts/AdminLayout";
+const AdminLayout = lazy(() => import("@/shared/layouts/AdminLayout"));
+
 // import { ManageRitualCreate } from "@/features/ritual/pages/ManageRitualCreate";
 // import { ManageRitualEdit } from "@/features/ritual/pages/ManageRitualEdit";
+
 const ManageRitualCreate = lazy(
   () => import("@/features/ritual/pages/ManageRitualCreate"),
 );
@@ -29,7 +32,7 @@ const UserManagementPage = lazy(
   () => import("@/features/users/pages/UserManagementPage"),
 );
 import { RitualDetail } from "@/features/ritual/pages/RitualDetailPage";
-import { lazy, Suspense, type ReactNode } from "react";
+
 import { LoadingSpinner } from "@/shared/components/common/LoadingSpinner";
 const withSuspense = (children: ReactNode) => {
   return (

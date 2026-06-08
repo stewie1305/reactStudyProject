@@ -1,7 +1,7 @@
 import type {
   BaseFilterParams,
   PaginatedResponse,
-  SelectOption,
+  SelectOptions,
 } from "@/shared/types";
 import type { RitualFormData } from "./schema";
 
@@ -89,7 +89,7 @@ export interface CreateRitualDto {
 export type UpdateRitualDto = Partial<CreateRitualDto>;
 
 // ─── Select option cho dropdown ──────────────────────────
-export type RitualSelectOption = SelectOption;
+export type RitualSelectOption = SelectOptions;
 
 
 export interface RitualFromProps {
